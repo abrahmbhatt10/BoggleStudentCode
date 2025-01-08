@@ -34,6 +34,14 @@ public class Boggle {
 
     /*
         Below code taken from Mr. Blick's slides:
+        Below pseudocode taken from Mr. Blick's slides:
+        dfs(row, col, word):
+	        if we have been here before, return
+	        if this word is not a valid prefix, return
+            mark this square as visited
+            recurse up, down, left, right with updated word
+            mark this square as not visited
+
      */
     public void dfs(char[][] grid, int i, int j) {
         if (i < 0 || j < 0 || i >= grid.length
