@@ -1,35 +1,38 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 
 public class Boggle {
 
     public static String[] findWords(char[][] board, String[] dictionary) {
 
         ArrayList<String> goodWords = new ArrayList<String>();
-        // TODO: Complete the function findWords(). Add all words that are found both on the board
-        //  and in the dictionary.
+        if(board == null || board.length <= 0 || board[0].length <= 0) {
+            return null;
+        }
+        //Initialize the dictionary
+        HashMap<String, Integer> mDict = new HashMap();
+        for(int i = 0; i < dictionary.length; i++)
+        {
+            mDict.put(dictionary[i], i);
+        }
+        String prefix = "";
+        boolean[][] visited = new boolean [board.length][board[0].length];
+        for(int i = 0; i < board.length; i++)
+        {
+            for(int j = 0; j < board[0].length; j++)
+            {
+                prefix = "";
+                visited[i][j] = false;
+                dfs(board, i, j,visited, prefix,goodWords, mDict);
+            }
+        }
 
         // Convert the list into a sorted array of strings, then return the array.
         String[] sol = new String[goodWords.size()];
         goodWords.toArray(sol);
         Arrays.sort(sol);
         return sol;
-    }
-
-    /*
-        Below code taken from Mr. Blick's slides:
-     */
-    public int numIslands(char[][] grid) {
-        int count = 0;
-        for (int i = 0; i < grid.length; i++) {
-            for (int j = 0; j < grid[0].length; j++) {
-                if(grid[i][j] == '1') {
-                    dfs(grid, i, j);
-                    count++;
-                }
-            }
-        }
-        return count;
     }
 
     /*
@@ -43,21 +46,22 @@ public class Boggle {
             mark this square as not visited
 
      */
-    public void dfs(char[][] grid, int i, int j) {
+    public static void dfs(char[][] grid, int i, int j, boolean[][] visited, String prefix, ArrayList<String> addWords, HashMap<String, Integer> mDict) {
         if (i < 0 || j < 0 || i >= grid.length
                 || j >= grid[0].length)  return;
 
-        if (grid[i][j] == '0') return;
+        if (visited[i][j]) return;
 
+        String currentPrefix = prefix + grid[i][j];
+        if(mDict.containsKey(currentPrefix)) {
+            //Valid prefix
+            addWords.add(currentPrefix);
+        }
         // Mark this square as visited
-        grid[i][j] = '0';
-
-        dfs(grid, i - 1, j);
-        dfs(grid, i + 1, j);
-        dfs(grid, i, j - 1);
-        dfs(grid, i, j + 1);
+        visited[i][j] = true;
+        dfs(grid, i - 1, j, visited, currentPrefix,addWords, mDict);
+        dfs(grid, i + 1, j, visited, currentPrefix,addWords, mDict);
+        dfs(grid, i, j - 1, visited, currentPrefix,addWords, mDict);
+        dfs(grid, i, j + 1, visited, currentPrefix,addWords, mDict);
     }
-
-
-
 }
