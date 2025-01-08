@@ -6,7 +6,6 @@ public class Boggle {
     public static String[] findWords(char[][] board, String[] dictionary) {
 
         ArrayList<String> goodWords = new ArrayList<String>();
-
         // TODO: Complete the function findWords(). Add all words that are found both on the board
         //  and in the dictionary.
 
@@ -34,7 +33,7 @@ public class Boggle {
     }
 
     /*
-            Below code taken from Mr. Blick's slides:
+        Below code taken from Mr. Blick's slides:
      */
     public void dfs(char[][] grid, int i, int j) {
         if (i < 0 || j < 0 || i >= grid.length
