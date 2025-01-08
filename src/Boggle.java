@@ -63,5 +63,8 @@ public class Boggle {
         dfs(grid, i + 1, j, visited, currentPrefix,addWords, mDict);
         dfs(grid, i, j - 1, visited, currentPrefix,addWords, mDict);
         dfs(grid, i, j + 1, visited, currentPrefix,addWords, mDict);
+
+        // Mark this square as unvisited
+        visited[i][j] = false;
     }
 }
