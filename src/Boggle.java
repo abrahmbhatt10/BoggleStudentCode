@@ -26,7 +26,12 @@ public class Boggle {
                 dfs(board, i, j,visited, prefix,goodWords, mDict);
             }
         }
-
+        /*
+        // Below printing used for debugging purposes
+        for(int i = 0; i < goodWords.size(); i++){
+            System.out.println(goodWords.get(i));
+        }
+         */
         // Convert the list into a sorted array of strings, then return the array.
         String[] sol = new String[goodWords.size()];
         goodWords.toArray(sol);
