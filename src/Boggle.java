@@ -23,7 +23,6 @@ public class Boggle {
             for(int j = 0; j < board[0].length; j++)
             {
                 prefix = "";
-                visited[i][j] = false;
                 dfs(board, i, j,visited, prefix,goodWords, mDict);
             }
         }
