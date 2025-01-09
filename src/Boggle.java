@@ -6,7 +6,7 @@ public class Boggle {
 
     public static String[] findWords(char[][] board, String[] dictionary) {
 
-        ArrayList<String> goodWords = new ArrayList<String>();
+        //ArrayList<String> goodWords = new ArrayList<String>();
         if(board == null || board.length <= 0 || board[0].length <= 0) {
             return null;
         }
@@ -35,13 +35,14 @@ public class Boggle {
          */
         /*
         Code below taken from https://stackoverflow.com/questions/16246821/how-to-get-values-and-keys-from-hashmap
-         */
+
         for(String key : mWords.keySet()){
             goodWords.add(key);
         }
+         */
         // Convert the list into a sorted array of strings, then return the array.
-        String[] sol = new String[goodWords.size()];
-        goodWords.toArray(sol);
+        String[] sol = new String[mWords.keySet().size()];
+        mWords.keySet().toArray(sol);
         Arrays.sort(sol);
         return sol;
     }
