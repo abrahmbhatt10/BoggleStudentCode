@@ -19,9 +19,11 @@ public class Boggle {
         }
         String prefix = "";
         boolean[][] visited = new boolean [board.length][board[0].length];
-        for(int i = 0; i < board.length; i++)
+        int boardLength = board.length;
+        int boardLength2 = board[0].length;
+        for(int i = 0; i < boardLength; i++)
         {
-            for(int j = 0; j < board[0].length; j++)
+            for(int j = 0; j < boardLength2; j++)
             {
                 prefix = "";
                 dfs(board, i, j,visited, prefix,mWords, mDict);
