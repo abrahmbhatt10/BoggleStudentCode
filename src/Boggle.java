@@ -5,23 +5,22 @@ import java.util.HashMap;
 public class Boggle {
 
     public static String[] findWords(char[][] board, String[] dictionary) {
-        int boardLength = board.length;
-        int boardLength2 = board[0].length;
+
         //ArrayList<String> goodWords = new ArrayList<String>();
-        if(board == null || boardLength <= 0 || boardLength2 <= 0) {
+        if(board == null || board.length <= 0 || board[0].length <= 0) {
             return null;
         }
         //Initialize the dictionary
         HashMap<String, Integer> mDict = new HashMap();
         HashMap<String, Integer> mWords = new HashMap();
-        int dictLength = dictionary.length;;
-        for(int i = 0; i < dictLength; i++)
+        for(int i = 0; i < dictionary.length; i++)
         {
             mDict.put(dictionary[i], i);
         }
         String prefix = "";
-        boolean[][] visited = new boolean [boardLength][boardLength2];
-
+        boolean[][] visited = new boolean [board.length][board[0].length];
+        int boardLength = board.length;
+        int boardLength2 = board[0].length;
         for(int i = 0; i < boardLength; i++)
         {
             for(int j = 0; j < boardLength2; j++)
@@ -65,10 +64,8 @@ public class Boggle {
 
      */
     public static void dfs(char[][] grid, int i, int j, boolean[][] visited, String prefix, HashMap<String, Integer> addWords, HashMap<String, Integer> mDict) {
-        int gridLength = grid.length;
-        int gridLength2 = grid[0].length;
-        if (i < 0 || j < 0 || i >= gridLength
-                || j >= gridLength2)  return;
+        if (i < 0 || j < 0 || i >= grid.length
+                || j >= grid[0].length)  return;
 
         if (visited[i][j]) return;
 
