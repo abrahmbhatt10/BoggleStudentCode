@@ -42,7 +42,10 @@ public class Boggle {
             goodWords.add(key);
         }
          */
-        // Convert the list into a sorted array of strings, then return the array.
+        /*
+        Below code converts the hashmap into a sorted array of strings, then return the array.
+        Below code taken from: https://stackoverflow.com/questions/1090556/java-how-to-convert-hashmapstring-object-to-array
+         */
         String[] sol = new String[mWords.keySet().size()];
         mWords.keySet().toArray(sol);
         Arrays.sort(sol);
