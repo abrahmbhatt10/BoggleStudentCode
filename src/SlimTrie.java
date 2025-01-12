@@ -1,4 +1,5 @@
 import java.text.Normalizer;
+import java.util.ArrayList;
 
 public class SlimTrie {
     public SlimNode root;
@@ -170,10 +171,25 @@ public class SlimTrie {
         }
     }
 
+    public ArrayList<String> getWordsList(SlimNode pNode){
+        if (pNode == null){
+            pNode = root;
+        }
+        SlimNode currentNode;
+        ArrayList<String> mWords = new ArrayList<String>();
+        for(int i = 0; pNode != null; i++){
+            currentNode = pNode.getNext(i);
+            if(currentNode != null){
+                mWords.add(currentNode.toString());
+                getWordsList(currentNode);
+        }
+        return mWords;
+    }
+
     /*
-        This function finds the node that matches the character.
-        If the character is not found, it returns a null.
-     */
+       This function finds the node that matches the character.
+       If the character is not found, it returns a null.
+    */
     public SlimNode getCurrentNode(int currentChar, SlimNode rootNode)
     {
         SlimNode pNode = rootNode;

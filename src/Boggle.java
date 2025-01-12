@@ -1,22 +1,21 @@
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.HashSet;
+
 
 public class Boggle {
 
     public static String[] findWords(char[][] board, String[] dictionary) {
 
-        //ArrayList<String> goodWords = new ArrayList<String>();
+        ArrayList<String> goodWords = new ArrayList<String>();
         if(board == null || board.length <= 0 || board[0].length <= 0) {
             return null;
         }
         //Initialize the dictionary
-        HashSet<String> mDict = new HashSet();
-        HashSet<String> mWords = new HashSet();
+        SlimTrie mDict = new SlimTrie();
+        SlimTrie mWords = new SlimTrie();
         for(int i = 0; i < dictionary.length; i++)
         {
-            mDict.add(dictionary[i]);
+            mDict.insert(dictionary[i]);
         }
         String prefix = "";
         boolean[][] visited = new boolean [board.length][board[0].length];
@@ -42,11 +41,11 @@ public class Boggle {
         }
          */
         /*
-        Below code converts the hashmap into a sorted array of strings, then return the array.
-        Below code taken from: https://stackoverflow.com/questions/1090556/java-how-to-convert-hashmapstring-object-to-array
-         */
-        String[] sol = new String[mWords.size()];
-        mWords.toArray(sol);
+            Below code converts the hashmap into a sorted array of strings, then return the array.
+            Below code taken from: https://stackoverflow.com/questions/1090556/java-how-to-convert-hashmapstring-object-to-array
+        */
+        goodWords = mWords.getWordsList();
+        String[] sol = (String[]) goodWords.toArray();
         Arrays.sort(sol);
         return sol;
     }
@@ -62,7 +61,7 @@ public class Boggle {
             mark this square as not visited
 
      */
-    public static void dfs(char[][] grid, int i, int j, boolean[][] visited, String prefix, HashSet<String> addWords, HashSet<String> mDict) {
+    public static void dfs(char[][] grid, int i, int j, boolean[][] visited, String prefix, SlimTrie addWords, SlimTrie mDict) {
         if (i < 0 || j < 0 || i >= grid.length
                 || j >= grid[0].length)  return;
 
