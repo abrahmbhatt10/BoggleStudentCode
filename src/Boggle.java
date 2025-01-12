@@ -7,7 +7,6 @@ public class Boggle {
 
     public static String[] findWords(char[][] board, String[] dictionary) {
 
-        ArrayList<String> goodWords = new ArrayList<String>();
         if(board == null || board.length <= 0 || board[0].length <= 0) {
             return null;
         }
@@ -45,7 +44,8 @@ public class Boggle {
             Below code converts the hashmap into a sorted array of strings, then return the array.
             Below code taken from: https://stackoverflow.com/questions/1090556/java-how-to-convert-hashmapstring-object-to-array
         */
-        String[] sol = (String[]) mWords.toArray();
+        ArrayList<String> goodWords = new ArrayList<String>(mWords);
+        String[] sol = (String[]) goodWords.toArray();
         Arrays.sort(sol);
         return sol;
     }
