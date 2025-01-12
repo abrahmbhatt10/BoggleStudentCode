@@ -69,7 +69,7 @@ public class Boggle {
 
         String currentPrefix = prefix + grid[i][j];
         // Below if statement checks if the word is in dictionary and isn't already in addWords.
-        if(mDict.contains(currentPrefix) && !addWords.contains(currentPrefix)) {
+        if(mDict.contains(currentPrefix)) {
             //Valid prefix
             addWords.add(currentPrefix);
         }
