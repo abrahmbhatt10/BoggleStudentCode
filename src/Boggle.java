@@ -45,7 +45,8 @@ public class Boggle {
             Below code taken from: https://stackoverflow.com/questions/1090556/java-how-to-convert-hashmapstring-object-to-array
         */
         ArrayList<String> goodWords = new ArrayList<String>(mWords);
-        String[] sol = (String[]) goodWords.toArray();
+        String[] sol = new String[goodWords.size()];
+        goodWords.toArray(sol);
         Arrays.sort(sol);
         return sol;
     }
