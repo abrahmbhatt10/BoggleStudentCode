@@ -1,6 +1,8 @@
 
 /*
 Below class taken from Algorithms 4th Edition by Roger Sedgewick and Kevin Wayne
+I added the code for submatch to find the number of characters that match the substring
+in the key that is searched. This helps reduce the DFS recursions.
  */
 public class TST {
     private Node root;
