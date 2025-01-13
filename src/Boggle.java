@@ -11,9 +11,8 @@ public class Boggle {
             return null;
         }
         //Initialize the dictionary
-        //HashSet mDict = new HashSet();
-        //HashSet mWords = new HashSet();
         TST mDict = new TST();
+        // Using a hashset because values are useless, and it doesn't add duplicates.
         HashSet<String> mWords = new HashSet<String>();
         for(int i = 0; i < dictionary.length; i++)
         {
@@ -30,27 +29,8 @@ public class Boggle {
             }
         }
         /*
-        // Below printing used for debugging purposes
-        for(int i = 0; i < goodWords.size(); i++){
-            System.out.println(goodWords.get(i));
-        }
+        Taken below from Mr. Blick's files
          */
-        /*
-        Code below taken from https://stackoverflow.com/questions/16246821/how-to-get-values-and-keys-from-hashmap
-
-        for(String key : mWords.keySet()){
-            goodWords.add(key);
-        }
-         */
-        /*
-            Below code converts the hashmap into a sorted array of strings, then return the array.
-            Below code taken from: https://stackoverflow.com/questions/1090556/java-how-to-convert-hashmapstring-object-to-array
-        */
-        //ArrayList<String> goodWords = new ArrayList<String>(mWords);
-        //String[] sol = new String[goodWords.size()];
-        //for(String word: mWords) {
-          //  System.out.println(word);
-        //}
         String[] sol = new String[mWords.size()];
         mWords.toArray(sol);
         Arrays.sort(sol);
