@@ -83,8 +83,11 @@ public class Boggle {
         } else {
             // Get the number of substring characters matched.
             subMatch = mDict.getSubMatch();
+            // Check for substring match
             if(subMatch != currentPrefix.length()-1)
             {
+                // There is no substring match
+                // Adding more characters to this prefix will not give valid words.
                 return;
             }
         }
