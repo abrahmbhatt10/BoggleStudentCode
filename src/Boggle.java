@@ -29,7 +29,7 @@ public class Boggle {
             }
         }
         /*
-        Taken below from Mr. Blick's files
+        Below code was already written by Mr. Blick
          */
         String[] sol = new String[mWords.size()];
         mWords.toArray(sol);
