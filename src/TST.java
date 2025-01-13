@@ -6,6 +6,7 @@ in the key that is searched. This helps reduce the DFS recursions.
  */
 public class TST {
     private Node root;
+    // Returns the count of substring characters matched.
     private int subMatch = 0;
 
     private class Node {
@@ -22,7 +23,7 @@ public class TST {
         }
         return x.val;
     }
-    public  int getSubMatch(){
+    public int getSubMatch(){
         return subMatch;
     }
     private Node get(Node x, String key, int d) {

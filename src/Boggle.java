@@ -78,9 +78,10 @@ public class Boggle {
         int subMatch = 0;
         // Below if statement checks if the word is in dictionary and isn't already in addWords.
         if(mDict.get(currentPrefix) != -1) {
-            //Invalid prefix
+            // Valid prefix
             addWords.add(currentPrefix);
         } else {
+            // Get the number of substring characters matched.
             subMatch = mDict.getSubMatch();
             if(subMatch != currentPrefix.length()-1)
             {
